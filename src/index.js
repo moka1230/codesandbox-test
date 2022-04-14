@@ -77,14 +77,14 @@
 //   return str;
 // };
 //処理が一行のときはreturn省略もできる
-const func2 = (str) => str;
-console.log(func2("Yhaaaaaaa"));
+// const func2 = (str) => str;
+// console.log(func2("Yhaaaaaaa"));
 
 // const func3 = (num1,num2) => {
 //   return num1 + num2;
 // };
-const func3 = (num1, num2) => num1 + num2;
-console.log(func3(10, 20));
+// const func3 = (num1, num2) => num1 + num2;
+// console.log(func3(10, 20));
 
 /**
  * 分割代入
@@ -137,8 +137,8 @@ console.log(func3(10, 20));
 // console.log(arr3);
 
 //配列のコピー，結合
-const arr4 = [10, 20];
-const arr5 = [30, 40];
+// const arr4 = [10, 20];
+// const arr5 = [30, 40];
 
 // const arr6 = [...arr4];
 // console.log(arr6);
@@ -147,6 +147,71 @@ const arr5 = [30, 40];
 // console.log(arr7);
 
 //イコールにしてしまうとarr8のみに変更を加えた時arr4にも影響が．．参照
-const arr8 = arr4;
-arr8[0] = 100;
-console.log(arr4);
+// const arr8 = arr4;
+// arr8[0] = 100;
+// console.log(arr4);
+
+/**
+ * mapやfilterを使った配列の処理
+ */
+const nameArr = ["田中", "山田", "安藤"];
+//従来
+for (let index = 0; index < nameArr.length; index++) {
+  console.log(nameArr[index]);
+}
+
+// const nameArr2 = nameArr.map((name)=>{
+//   return name;
+// })
+// console.log(nameArr2);
+//一行でできてしまう
+nameArr.map((name, index) => console.log(`${index + 1}番目は${name}です．`));
+
+const numArr = [1, 2, 3, 4, 5];
+const newNumArr = numArr.filter((num) => {
+  return num % 2 === 0;
+});
+console.log(newNumArr);
+
+const newNameArr = nameArr.map((name) => {
+  if (name === "安藤") {
+    return name;
+  } else {
+    return `${name}さん`;
+  }
+});
+console.log(newNameArr);
+
+/**
+ * 三項演算子
+ */
+//ある条件？条件がtrueの時:falseの時
+const val1 = 1 > 0 ? "truedayo" : "falsedayo";
+console.log(val1);
+
+const num = "a";
+console.log(num.toLocaleString());
+
+const formattedNum =
+  typeof num === "number" ? num.toLocaleString() : "数値入れて";
+console.log(formattedNum);
+
+const checkSum = (num1, num2) => {
+  return num1 + num2 > 100 ? "100超えてる" : "許容範囲内";
+};
+console.log(checkSum(10, 200));
+
+/**
+ * 論理演算しの本当の意味をしろう && ||
+ */
+//一般的にはまたはとかかつだけど厳密には，，
+
+// || は左側がFalseなら右側を返す
+const a = null;
+const fee = a || "金額未設定";
+console.log(fee);
+
+// && は左側がTrueなら右側を返す
+const a2 = 100;
+const fee2 = a2 && "何か設定されました";
+console.log(fee2);
